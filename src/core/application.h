@@ -1,10 +1,9 @@
 #pragma once
 
-#include <QCoreApplication>
+#include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
 #include "../chat/backend.h"
-#include "base.h"
 #include "settings.h"
 
 namespace llm_chat {
@@ -28,10 +27,10 @@ class Application {
   void registerQmlTypes() const;
   void addFonts() const;
 
-  Scope<QCoreApplication> m_Application;
-  Scope<QQmlApplicationEngine> m_Engine = CreateScope<QQmlApplicationEngine>();
-  Scope<Settings> m_Settings = CreateScope<Settings>();
-  Scope<ChatBackend> m_ChatBackend = CreateScope<ChatBackend>();
+  QScopedPointer<QGuiApplication> m_Application;
+  QScopedPointer<QQmlApplicationEngine> m_Engine{new QQmlApplicationEngine};
+  QScopedPointer<Settings> m_Settings{new Settings()};
+  QScopedPointer<ChatBackend> m_ChatBackend{new ChatBackend()};
 };
 
 }  // namespace llm_chat

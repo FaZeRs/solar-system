@@ -10,6 +10,7 @@ namespace llm_chat {
 
 class ChatModel : public QAbstractListModel {
   Q_OBJECT
+  Q_PROPERTY(QList<Message *> messages READ messages CONSTANT)
 
  public:
   enum MessageRoles { TextRole = Qt::UserRole + 1, IsUserRole };

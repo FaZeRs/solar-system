@@ -5,7 +5,6 @@
 #include <QNetworkAccessManager>
 #include <QObject>
 
-#include "../core/base.h"
 #include "model.h"
 
 namespace llm_chat {
@@ -22,8 +21,8 @@ class ChatBackend : public QObject {
   void sendMessage(const QString &message);
 
  private:
-  Scope<QNetworkAccessManager> m_Manager;
-  Scope<ChatModel> m_Model;
+  QScopedPointer<QNetworkAccessManager> m_Manager;
+  QScopedPointer<ChatModel> m_Model;
   int m_CurrentMessageIndex;
 
   void sendRequestToOllama(const QString &prompt);

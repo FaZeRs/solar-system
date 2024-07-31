@@ -48,7 +48,7 @@ ColumnLayout {
 
                     ShortcutRow {
                         shortcutName: "newShortcut"
-                        shortcutDisplayName: qsTr("New Project")
+                        shortcutDisplayName: qsTr("New Chat")
                     }
                     ShortcutRow {
                         shortcutName: "quitShortcut"

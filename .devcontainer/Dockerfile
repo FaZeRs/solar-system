@@ -3,7 +3,7 @@ FROM ubuntu:${VARIANT}
 
 LABEL maintainer="Nauris Linde <nauris.linde@giraffe360.com>"
 LABEL company="Giraffe360"
-LABEL description="Development environment for Room Sketcher"
+LABEL description="Development environment for GPT Chat"
 LABEL version="1.0"
 
 # Restate the variant to use it later on in the llvm and cmake installations

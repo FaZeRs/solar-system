@@ -51,28 +51,8 @@ ColumnLayout {
                         shortcutDisplayName: qsTr("New Project")
                     }
                     ShortcutRow {
-                        shortcutName: "openShortcut"
-                        shortcutDisplayName: qsTr("Open Project")
-                    }
-                    ShortcutRow {
-                        shortcutName: "saveShortcut"
-                        shortcutDisplayName: qsTr("Save Project")
-                    }
-                    ShortcutRow {
-                        shortcutName: "saveAsShortcut"
-                        shortcutDisplayName: qsTr("Save Project As")
-                    }
-                    ShortcutRow {
                         shortcutName: "quitShortcut"
                         shortcutDisplayName: qsTr("Quit")
-                    }
-                    ShortcutRow {
-                        shortcutName: "undoShortcut"
-                        shortcutDisplayName: qsTr("Undo Action")
-                    }
-                    ShortcutRow {
-                        shortcutName: "redoShortcut"
-                        shortcutDisplayName: qsTr("Redo Action")
                     }
                     ShortcutRow {
                         shortcutName: "optionsShortcut"

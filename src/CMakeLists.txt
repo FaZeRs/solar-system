@@ -9,7 +9,10 @@ add_subdirectory(quick)
 set(SOURCE_FILES
     main.cpp
     core/application.cpp
-    core/settings.cpp)
+    core/settings.cpp
+    chat/backend.cpp
+    chat/message.cpp
+    chat/model.cpp)
 
 set(QML_FILES
     qml/main.qml
@@ -22,7 +25,8 @@ set(QML_FILES
     qml/StatusBar.qml
     qml/FpsCounter.qml
     qml/ToolBar.qml
-    qml/ToolButton.qml)
+    qml/ToolButton.qml
+    qml/ChatView.qml)
 
 set(RESOURCE_FILES
     assets/fonts/font-awesome-regular.otf
@@ -37,7 +41,7 @@ qt_add_executable(${CMAKE_PROJECT_NAME}
     ${SOURCE_FILES})
 
 qt_add_qml_module(${CMAKE_PROJECT_NAME}
-    URI roomsketcher
+    URI llm_chat
     VERSION 1.0
     QML_FILES ${QML_FILES}
     RESOURCES qtquickcontrols2.conf
@@ -107,7 +111,7 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-# Generate the deployment script for the target RoomSketcher.
+# Generate the deployment script for the target LLM-Chat.
 qt_generate_deploy_qml_app_script(
     TARGET ${CMAKE_PROJECT_NAME}
     OUTPUT_SCRIPT deploy_script

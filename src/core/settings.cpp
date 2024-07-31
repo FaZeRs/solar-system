@@ -6,7 +6,7 @@
 #include <QVariant>
 #include <QVector>
 
-namespace room_sketcher {
+namespace llm_chat {
 
 Settings::Settings(QObject *parent) : QSettings(parent) {}
 
@@ -101,40 +101,6 @@ QString Settings::newShortcut() const {
 void Settings::setNewShortcut(const QString &shortcut){
     SET_SHORTCUT("newShortcut", defaultNewShortcut, newShortcutChanged)}
 
-QString Settings::defaultOpenShortcut() const {
-  return QKeySequence(QKeySequence::Open).toString();
-}
-
-QString Settings::openShortcut() const {
-  GET_SHORTCUT("openShortcut", defaultOpenShortcut)
-}
-
-void Settings::setOpenShortcut(const QString &shortcut){
-    SET_SHORTCUT("openShortcut", defaultOpenShortcut, openShortcutChanged)}
-
-QString Settings::defaultSaveShortcut() const {
-  return QKeySequence(QKeySequence::Save).toString();
-}
-
-QString Settings::saveShortcut() const {
-  GET_SHORTCUT("saveShortcut", defaultSaveShortcut)
-}
-
-void Settings::setSaveShortcut(const QString &shortcut){
-    SET_SHORTCUT("saveShortcut", defaultSaveShortcut, saveShortcutChanged)}
-
-QString Settings::defaultSaveAsShortcut() const {
-  return QKeySequence(QKeySequence::SaveAs).toString();
-}
-
-QString Settings::saveAsShortcut() const {
-  GET_SHORTCUT("saveAsShortcut", defaultSaveAsShortcut)
-}
-
-void Settings::setSaveAsShortcut(const QString &shortcut){
-    SET_SHORTCUT("saveAsShortcut", defaultSaveAsShortcut,
-                 saveAsShortcutChanged)}
-
 QString Settings::defaultQuitShortcut() const {
   return QKeySequence(QKeySequence::Quit).toString();
 }
@@ -144,61 +110,6 @@ QString Settings::quitShortcut() const {
 }
 void Settings::setQuitShortcut(const QString &shortcut){
     SET_SHORTCUT("quitShortcut", defaultQuitShortcut, quitShortcutChanged)}
-
-QString Settings::defaultUndoShortcut() const {
-  return QKeySequence(QKeySequence::Undo).toString();
-}
-
-QString Settings::undoShortcut() const {
-  GET_SHORTCUT("undoShortcut", defaultUndoShortcut)
-}
-
-void Settings::setUndoShortcut(const QString &shortcut){
-    SET_SHORTCUT("undoShortcut", defaultUndoShortcut, undoShortcutChanged)}
-
-QString Settings::defaultRedoShortcut() const {
-  return QKeySequence(QKeySequence::Redo).toString();
-}
-
-QString Settings::redoShortcut() const {
-  GET_SHORTCUT("redoShortcut", defaultRedoShortcut)
-}
-
-void Settings::setRedoShortcut(const QString &shortcut){
-    SET_SHORTCUT("redoShortcut", defaultRedoShortcut, redoShortcutChanged)}
-
-QString Settings::defaultCopyShortcut() const {
-  return QKeySequence(QKeySequence::Copy).toString();
-}
-
-QString Settings::copyShortcut() const {
-  GET_SHORTCUT("copyShortcut", defaultCopyShortcut)
-}
-
-void Settings::setCopyShortcut(const QString &shortcut){
-    SET_SHORTCUT("copyShortcut", defaultCopyShortcut, copyShortcutChanged)}
-
-QString Settings::defaultCutShortcut() const {
-  return QKeySequence(QKeySequence::Cut).toString();
-}
-
-QString Settings::cutShortcut() const {
-  GET_SHORTCUT("cutShortcut", defaultCutShortcut)
-}
-
-void Settings::setCutShortcut(const QString &shortcut){
-    SET_SHORTCUT("cutShortcut", defaultCutShortcut, cutShortcutChanged)}
-
-QString Settings::defaultPasteShortcut() const {
-  return QKeySequence(QKeySequence::Paste).toString();
-}
-
-QString Settings::pasteShortcut() const {
-  GET_SHORTCUT("pasteShortcut", defaultPasteShortcut)
-}
-
-void Settings::setPasteShortcut(const QString &shortcut){
-    SET_SHORTCUT("pasteShortcut", defaultPasteShortcut, pasteShortcutChanged)}
 
 QString Settings::defaultOptionsShortcut() const {
   return QKeySequence(QKeySequence::Preferences).toString();
@@ -225,4 +136,4 @@ void Settings::setFullScreenShortcut(const QString &shortcut) {
                fullScreenShortcutChanged)
 }
 
-}  // namespace room_sketcher
+}  // namespace llm_chat

@@ -2,10 +2,10 @@ cmake_minimum_required(VERSION 3.27)
 
 include(cmake/Version.cmake)
 
-project(room-sketcher
+project(llm-chat
   VERSION ${VERSION_SHORT}
-  DESCRIPTION "Floor Plan Editor"
-  HOMEPAGE_URL "https://giraffe360.com"
+  DESCRIPTION "LLM-Chat"
+  HOMEPAGE_URL "https://naurislinde.dev"
   LANGUAGES CXX C)
 
 include(cmake/Options.cmake)

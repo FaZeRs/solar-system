@@ -3,10 +3,11 @@
 #include <QCoreApplication>
 #include <QQmlApplicationEngine>
 
+#include "../chat/backend.h"
 #include "base.h"
 #include "settings.h"
 
-namespace room_sketcher {
+namespace llm_chat {
 
 class Application {
  public:
@@ -30,6 +31,7 @@ class Application {
   Scope<QCoreApplication> m_Application;
   Scope<QQmlApplicationEngine> m_Engine = CreateScope<QQmlApplicationEngine>();
   Scope<Settings> m_Settings = CreateScope<Settings>();
+  Scope<ChatBackend> m_ChatBackend = CreateScope<ChatBackend>();
 };
 
-}  // namespace room_sketcher
+}  // namespace llm_chat

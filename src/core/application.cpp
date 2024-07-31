@@ -61,7 +61,7 @@ static void spdlogMessageHandler(QtMsgType type,
 }
 #endif
 
-namespace room_sketcher {
+namespace llm_chat {
 
 static Scope<QCoreApplication> createApplication(int& argc, char** argv) {
   QCoreApplication::setApplicationName(config::project_name);
@@ -101,6 +101,8 @@ Application::Application(int& argc, char** argv)
   addFonts();
 
   m_Engine->rootContext()->setContextProperty("settings", m_Settings.get());
+  m_Engine->rootContext()->setContextProperty("chatBackend",
+                                              m_ChatBackend.get());
   m_Engine->load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
   if (m_Engine->rootObjects().isEmpty()) qWarning("Failed to load main.qml");
 }
@@ -124,7 +126,10 @@ void Application::initializeSentry() {
 #endif
 }
 
-void Application::registerQmlTypes() const { qRegisterMetaType<Settings*>(); }
+void Application::registerQmlTypes() const {
+  qRegisterMetaType<Settings*>();
+  qRegisterMetaType<ChatModel*>();
+}
 
 void Application::addFonts() const {
   QFontDatabase::addApplicationFont(":/assets/fonts/font-awesome-regular.otf");
@@ -132,4 +137,4 @@ void Application::addFonts() const {
   QFontDatabase::addApplicationFont(":/assets/fonts/font-awesome-brands.otf");
 }
 
-}  // namespace room_sketcher
+}  // namespace llm_chat

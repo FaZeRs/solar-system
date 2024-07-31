@@ -32,6 +32,7 @@ ColumnLayout {
                 wrapMode: Text.Wrap
                 anchors.fill: parent
                 anchors.margins: 10
+                textFormat: Text.MarkdownText
             }
         }
         ScrollBar.vertical: ScrollBar{}

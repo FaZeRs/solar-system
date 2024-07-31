@@ -3,59 +3,45 @@
 #include <config.h>
 #if USE_SENTRY
 #include <sentry.h>
-#endif
-#if USE_SPDLOG
-#include <spdlog/spdlog.h>
 
-#include "logger.h"
+#include "parameters.h"
 #endif
 
 #include <QApplication>
 #include <QFontDatabase>
 #include <QQmlContext>
 
-#if USE_SPDLOG
-static void spdlogMessageHandler(QtMsgType type,
+#if USE_SENTRY
+static void sentryMessageHandler(QtMsgType type,
                                  const QMessageLogContext& context,
                                  const QString& msg) {
   QByteArray loc = msg.toUtf8();
   switch (type) {
     case QtDebugMsg:
-      spdlog::log(
-          spdlog::source_loc{context.file, context.line, context.function},
-          spdlog::level::debug, loc.constData());
+      QMessageLogger(context.file, context.line, context.function).debug()
+          << msg;
       break;
     case QtInfoMsg:
-      spdlog::log(
-          spdlog::source_loc{context.file, context.line, context.function},
-          spdlog::level::info, loc.constData());
+      QMessageLogger(context.file, context.line, context.function).info()
+          << msg;
       break;
     case QtWarningMsg:
-      spdlog::log(
-          spdlog::source_loc{context.file, context.line, context.function},
-          spdlog::level::warn, loc.constData());
-#if USE_SENTRY
+      QMessageLogger(context.file, context.line, context.function).warning()
+          << msg;
       sentry_capture_event(sentry_value_new_message_event(
           SENTRY_LEVEL_WARNING, "default", loc.constData()));
-#endif
       break;
     case QtCriticalMsg:
-      spdlog::log(
-          spdlog::source_loc{context.file, context.line, context.function},
-          spdlog::level::err, loc.constData());
-#if USE_SENTRY
+      QMessageLogger(context.file, context.line, context.function).critical()
+          << msg;
       sentry_capture_event(sentry_value_new_message_event(
           SENTRY_LEVEL_ERROR, "default", loc.constData()));
-#endif
       break;
     case QtFatalMsg:
-      spdlog::log(
-          spdlog::source_loc{context.file, context.line, context.function},
-          spdlog::level::critical, loc.constData());
-#if USE_SENTRY
+      QMessageLogger(context.file, context.line, context.function).fatal()
+          << msg;
       sentry_capture_event(sentry_value_new_message_event(
           SENTRY_LEVEL_FATAL, "default", loc.constData()));
-#endif
       break;
   }
 }
@@ -78,14 +64,9 @@ static Scope<QCoreApplication> createApplication(int& argc, char** argv) {
 
 Application::Application(int& argc, char** argv)
     : m_Application(createApplication(argc, argv)) {
-#if USE_SPDLOG
-  Logger::instance();
-  qInstallMessageHandler(spdlogMessageHandler);
-#else
   qSetMessagePattern(
       "[%{time h:mm:ss.zzz}] [%{type}] [t:%{threadid}] "
       "[%{function}:%{line}] %{message}");
-#endif
 
   qInfo("*** ************* ***");
   qInfo("*** %s ***", config::project_name);
@@ -94,6 +75,7 @@ Application::Application(int& argc, char** argv)
 
 #if USE_SENTRY
   initializeSentry();
+  qInstallMessageHandler(sentryMessageHandler);
   auto sentryClose = qScopeGuard([] { sentry_close(); });
 #endif
 

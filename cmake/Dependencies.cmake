@@ -13,13 +13,4 @@ function(setup_dependencies)
             SYSTEM YES
         )
     endif()
-
-    if(USE_SPDLOG AND NOT TARGET spdlog::spdlog)
-        CPMAddPackage(
-            NAME spdlog
-            VERSION 1.14.1
-            GITHUB_REPOSITORY gabime/spdlog
-            SYSTEM YES
-        )
-    endif()
 endfunction()

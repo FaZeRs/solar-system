@@ -174,10 +174,9 @@ jobs:
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' && matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }}
-        working-directory: ${{ runner.workspace }}/build
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./html
+          publish_dir: ./build/html
 
       - name: Publish to codecov
         if: ${{ (runner.os == 'Ubuntu' || runner.os == 'Windows') && matrix.build_type == 'Debug' }}

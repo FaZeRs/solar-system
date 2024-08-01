@@ -35,7 +35,7 @@ void ChatBackend::sendRequestToOllama(const QString &prompt) {
   }
 
   QJsonObject json;
-  json["model"] = "llama3.1:8b";
+  json["model"] = "llama3.1";
   json["prompt"] = prompt;
   json["stream"] = true;
   json["context"] = context;
@@ -74,5 +74,7 @@ void ChatBackend::handleStreamResponse(QNetworkReply *reply) {
     }
   }
 }
+
+void ChatBackend::clearMessages() { m_Model->clearMessages(); }
 
 }  // namespace llm_chat

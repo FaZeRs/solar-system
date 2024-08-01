@@ -19,6 +19,7 @@ class ChatBackend : public QObject {
 
  public slots:
   void sendMessage(const QString &message);
+  void clearMessages();
 
  private:
   QScopedPointer<QNetworkAccessManager> m_Manager;

@@ -55,4 +55,11 @@ void ChatModel::updateMessageContext(int index,
 
 QList<Message *> ChatModel::messages() const { return m_Messages; }
 
+void ChatModel::clearMessages() {
+  beginResetModel();
+  qDeleteAll(m_Messages);
+  m_Messages.clear();
+  endResetModel();
+}
+
 }  // namespace llm_chat

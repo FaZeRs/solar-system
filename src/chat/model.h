@@ -29,6 +29,7 @@ class ChatModel : public QAbstractListModel {
   void updateMessageContext(int index, const QVector<QVariant> &new_context);
 
   [[nodiscard]] QList<Message *> messages() const;
+  void clearMessages();
 
  private:
   QList<Message *> m_Messages;

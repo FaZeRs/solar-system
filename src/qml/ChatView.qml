@@ -46,10 +46,11 @@ ColumnLayout {
             onAccepted: sendMessage()
         }
 
-        Button {
+        RoundButton {
             id: sendButton
-            text: qsTr("Send")
-            onClicked: sendMessage();
+            text: "\uf054"
+            font.family: "Font Awesome 6 Free Solid"
+            onClicked: sendMessage(); 
         }
 
         Shortcut {

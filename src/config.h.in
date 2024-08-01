@@ -1,5 +1,4 @@
-#ifndef LLM_CHAT_CONFIG_H
-#define LLM_CHAT_CONFIG_H
+#pragma once
 
 namespace llm_chat::config {
 inline constexpr char const* project_name = "@PROJECT_NAME@";
@@ -8,5 +7,3 @@ inline constexpr char const* project_description = "@PROJECT_DESCRIPTION@";
 inline constexpr char const* project_url = "@PROJECT_HOMEPAGE_URL@";
 inline constexpr char const* organization_name = "Nauris Linde";
 }  // namespace llm_chat::config
-
-#endif  // LLM_CHAT_CONFIG_H

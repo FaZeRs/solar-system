@@ -1,5 +1,4 @@
-#ifndef CHAT_BACKEND_H
-#define CHAT_BACKEND_H
+#pragma once
 
 #include <QJsonArray>
 #include <QNetworkAccessManager>
@@ -31,5 +30,3 @@ class ChatBackend : public QObject {
 };
 
 }  // namespace llm_chat
-
-#endif  // CHAT_BACKEND_H

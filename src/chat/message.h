@@ -1,5 +1,4 @@
-#ifndef MESSAGE_H
-#define MESSAGE_H
+#pragma once
 
 #include <QObject>
 #include <QString>
@@ -33,5 +32,3 @@ class Message : public QObject {
 }  // namespace llm_chat
 
 Q_DECLARE_METATYPE(llm_chat::Message *)
-
-#endif  // MESSAGE_H

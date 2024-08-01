@@ -1,5 +1,4 @@
-#ifndef CHAT_MODEL_H
-#define CHAT_MODEL_H
+#pragma once
 
 #include <QAbstractListModel>
 #include <QVector>
@@ -36,5 +35,3 @@ class ChatModel : public QAbstractListModel {
 };
 
 }  // namespace llm_chat
-
-#endif  // CHAT_MODEL_H

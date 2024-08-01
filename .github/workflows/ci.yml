@@ -56,6 +56,14 @@ jobs:
             generator: "Ninja Multi-Config"
             qt_host: mac
             qt_arch: clang_64
+            build_type: Release
+
+          - os: macos-latest
+            compiler: llvm
+            generator: "Ninja Multi-Config"
+            qt_host: mac
+            qt_arch: clang_64
+            build_type: Debug
 
           - os: windows-latest
             compiler: msvc

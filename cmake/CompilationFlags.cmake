@@ -36,3 +36,7 @@ endif()
 if(MSVC)
   add_definitions(/MP)
 endif()
+
+if(APPLE)
+  set(CMAKE_OSX_ARCHITECTURES "arm64" CACHE INTERNAL "" FORCE)
+endif()

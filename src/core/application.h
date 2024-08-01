@@ -28,9 +28,9 @@ class Application {
   void addFonts() const;
 
   QScopedPointer<QGuiApplication> m_Application;
-  QScopedPointer<QQmlApplicationEngine> m_Engine{new QQmlApplicationEngine};
   QScopedPointer<Settings> m_Settings{new Settings()};
   QScopedPointer<ChatBackend> m_ChatBackend{new ChatBackend()};
+  QScopedPointer<QQmlApplicationEngine> m_Engine{new QQmlApplicationEngine};
 };
 
 }  // namespace llm_chat

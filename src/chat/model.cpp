@@ -23,13 +23,6 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const {
   }
 }
 
-QHash<int, QByteArray> ChatModel::roleNames() const {
-  QHash<int, QByteArray> roles;
-  roles[TextRole] = "text";
-  roles[IsUserRole] = "isUser";
-  return roles;
-}
-
 void ChatModel::addMessage(const QString &text, bool isUser,
                            const QVector<QVariant> &context) {
   beginInsertRows(QModelIndex(), rowCount(), rowCount());
@@ -37,7 +30,7 @@ void ChatModel::addMessage(const QString &text, bool isUser,
   endInsertRows();
 }
 
-void ChatModel::updateMessageText(int index, const QString &new_text) {
+void ChatModel::updateMessageText(const int index, const QString &new_text) {
   if (index >= 0 && index < m_Messages.size()) {
     const auto text = m_Messages[index]->text() + new_text;
     m_Messages[index]->setText(text);
@@ -46,7 +39,7 @@ void ChatModel::updateMessageText(int index, const QString &new_text) {
   }
 }
 
-void ChatModel::updateMessageContext(int index,
+void ChatModel::updateMessageContext(const int index,
                                      const QVector<QVariant> &context) {
   if (index >= 0 && index < m_Messages.size()) {
     m_Messages[index]->setContext(context);

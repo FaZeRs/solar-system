@@ -25,7 +25,7 @@ jobs:
       matrix:
         os:
           - windows-latest
-          - ubuntu--24.04
+          - ubuntu-24.04
           - macos-latest
         compiler:
           - llvm-18
@@ -43,7 +43,7 @@ jobs:
           - os: macos-latest
             compiler: gcc-14
         include:
-          - os: ubuntu--24.04
+          - os: ubuntu-24.04
             qt_host: linux
             qt_arch: linux_gcc_64
 

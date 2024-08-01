@@ -23,7 +23,7 @@ on:
 jobs:
   analyze:
     name: Analyze
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     permissions:
       actions: read
       contents: read
@@ -37,7 +37,7 @@ jobs:
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
         compiler:
           # you can specify the version after `-` like "llvm-13.0.0".
-          - gcc
+          - gcc-14
         generator:
           - "Ninja Multi-Config"
         build_type:
@@ -75,9 +75,9 @@ jobs:
           opencppcoverage: false
 
       - name: Install Qt
-        uses: jurplel/install-qt-action@v3
+        uses: jurplel/install-qt-action@v4
         with:
-          version: "6.7.0"
+          version: "6.7.2"
           host: ${{ matrix.qt_host }}
           target: "desktop"
           arch: ${{ matrix.qt_arch }}

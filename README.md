@@ -1,6 +1,4 @@
-# QT 6 Project Template
-
-Project template for QT projects.
+# LLM Chat
 
 ## Build
 

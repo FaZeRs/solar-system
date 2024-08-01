@@ -1,4 +1,4 @@
-include(cmake/modules/CPM.cmake)
+include(cmake/CPM.cmake)
 
 function(setup_dependencies)
     find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core)
@@ -9,7 +9,7 @@ function(setup_dependencies)
             VERSION 0.7.6
             GITHUB_REPOSITORY getsentry/sentry-native
             GIT_TAG "0.7.6"
-            OPTIONS "SENTRY_INTEGRATION_QT ON" "SENTRY_BUILD_TESTS OFF" "SENTRY_BUILD_EXAMPLES OFF"
+            OPTIONS "SENTRY_BACKEND breakpad" "SENTRY_INTEGRATION_QT ON" "SENTRY_BUILD_TESTS OFF" "SENTRY_BUILD_EXAMPLES OFF"
             SYSTEM YES
         )
     endif()

@@ -15,3 +15,6 @@ target_link_system_libraries(quick_widgets PRIVATE
     Qt::Core
     Qt::Quick)
 
+if(APPLE)
+    set_target_properties(quick_widgets PROPERTIES MACOSX_BUNDLE TRUE)
+endif()

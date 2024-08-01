@@ -1,5 +1,6 @@
 #pragma once
 
+/// @brief This namespace contains all the parameters used in the project.
 namespace llm_chat::parameters {
 
 inline static constexpr auto sentry_dsn{

@@ -1,5 +1,6 @@
 #pragma once
 
+/// @brief This namespace contains all the configuration values that are used in the project.
 namespace llm_chat::config {
 inline constexpr char const* project_name = "@PROJECT_NAME@";
 inline constexpr char const* project_version = "@PROJECT_VERSION@";

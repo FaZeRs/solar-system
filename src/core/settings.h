@@ -59,7 +59,7 @@ class Settings : public QSettings {
   /// @return The current FPS visibility.
   [[nodiscard]] bool isFpsVisible() const;
   /// @brief Sets the current FPS visibility for the application.
-  /// @param fpsVisible The new FPS visibility.
+  /// @param fps_visible The new FPS visibility.
   void setFpsVisible(const bool fps_visible);
 
   /// @brief Resets all shortcuts to their default values.

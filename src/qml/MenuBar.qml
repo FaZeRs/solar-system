@@ -27,10 +27,6 @@ MenuBar {
     Menu {
         title: qsTr("File")
         MenuItem {
-            action: newAction                
-        }
-        MenuSeparator { }
-        MenuItem {
             action: quitAction
         }
     }

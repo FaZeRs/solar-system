@@ -7,7 +7,6 @@
 #include "parameters.h"
 #endif
 
-#include <QApplication>
 #include <QFontDatabase>
 #include <QQmlContext>
 

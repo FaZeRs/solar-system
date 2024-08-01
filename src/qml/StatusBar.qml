@@ -29,14 +29,13 @@ Pane {
         objectName: "statusBarLayout"
         width: parent.width
         visible: true
-        Layout.alignment: Qt.AlignVCenter
         spacing: 0
 
         FpsCounter {
             id: fpsCounter
             visible: settings.fpsVisible
             
-            anchors.verticalCenter: parent.verticalCenter
+            Layout.alignment: Qt.AlignVCenter
             Layout.minimumWidth: fpsMaxTextMetrics.width
             Layout.maximumWidth: fpsMaxTextMetrics.width
 

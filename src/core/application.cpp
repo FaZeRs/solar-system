@@ -12,6 +12,10 @@
 #include <QQmlContext>
 
 #if USE_SENTRY
+/// @brief The Sentry message handler.
+/// @param type The type of the message.
+/// @param context The context of the message.
+/// @param msg The message.
 static void sentryMessageHandler(QtMsgType type,
                                  const QMessageLogContext& context,
                                  const QString& msg) {
@@ -49,6 +53,10 @@ static void sentryMessageHandler(QtMsgType type,
 
 namespace llm_chat {
 
+/// @brief Creates the application.
+/// @param argc The number of arguments.
+/// @param argv The arguments.
+/// @return The application.
 static QScopedPointer<QGuiApplication> createApplication(int& argc,
                                                          char** argv) {
   QCoreApplication::setApplicationName(config::project_name);

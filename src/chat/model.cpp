@@ -23,6 +23,13 @@ QVariant ChatModel::data(const QModelIndex &index, int role) const {
   }
 }
 
+QHash<int, QByteArray> ChatModel::roleNames() const {
+  QHash<int, QByteArray> roles;
+  roles[TextRole] = "text";
+  roles[IsUserRole] = "isUser";
+  return roles;
+}
+
 void ChatModel::addMessage(const QString &text, bool isUser,
                            const QVector<QVariant> &context) {
   beginInsertRows(QModelIndex(), rowCount(), rowCount());

@@ -30,7 +30,9 @@ class ChatModel : public QAbstractListModel {
   /// @param role The data role.
   [[nodiscard]] QVariant data(const QModelIndex &index,
                               int role = Qt::DisplayRole) const override;
-
+  /// @brief Returns the role names for the model.
+  /// @return The role names for the model.
+  [[nodiscard]] QHash<int, QByteArray> roleNames() const override;
   /// @brief Adds a new message to the model.
   /// @param text The message text.
   /// @param is_user Whether the message is from the user.

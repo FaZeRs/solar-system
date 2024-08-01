@@ -20,8 +20,8 @@ ColumnLayout {
             // color: isUser ? "#e6e6e6" : "#f0f0f0"
             gradient: Gradient {
                 orientation: Gradient.Horizontal
-                GradientStop { position: -0.2; color: isUser ? "#252B35" : "#32CEF2" }
-                GradientStop { position: 1.0; color: isUser ? "#3f4045" : "#2D6CF7" }
+                GradientStop { position: -0.2; color: model.isUser ? "#252B35" : "#32CEF2" }
+                GradientStop { position: 1.0; color: model.isUser ? "#3f4045" : "#2D6CF7" }
             }
             radius: 12
 

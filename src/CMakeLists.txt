@@ -57,8 +57,8 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
     WIN32_EXECUTABLE TRUE)
 
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
-    rs::project_options
-    rs::project_warnings
+    libs::project_options
+    libs::project_warnings
 )
 
 if(USE_OPENMP)

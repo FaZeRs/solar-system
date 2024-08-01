@@ -53,8 +53,6 @@ void ChatModel::updateMessageContext(const int index,
   }
 }
 
-QList<Message *> ChatModel::messages() const { return m_Messages; }
-
 void ChatModel::clearMessages() {
   beginResetModel();
   qDeleteAll(m_Messages);

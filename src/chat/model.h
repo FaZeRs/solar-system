@@ -50,7 +50,9 @@ class ChatModel : public QAbstractListModel {
                             const QVector<QVariant> &new_context);
   /// @brief Returns the list of messages.
   /// @return The list of messages.
-  [[nodiscard]] QList<Message *> messages() const;
+  [[nodiscard]] inline const QList<Message *> &messages() const {
+    return m_Messages;
+  }
   /// @brief Clears the list of messages.
   void clearMessages();
 

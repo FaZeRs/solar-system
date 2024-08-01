@@ -6,7 +6,7 @@ import QtQuick.Window
 Pane {
     id: statusBar
     objectName: "statusBar"
-    contentHeight: statusBarLayout.implicitHeight
+    height: statusBarLayout.implicitHeight
     padding: 6
 
     Rectangle {
@@ -29,13 +29,14 @@ Pane {
         objectName: "statusBarLayout"
         width: parent.width
         visible: true
-        anchors.verticalCenter: parent.verticalCenter
+        Layout.alignment: Qt.AlignVCenter
         spacing: 0
 
         FpsCounter {
             id: fpsCounter
             visible: settings.fpsVisible
-
+            
+            anchors.verticalCenter: parent.verticalCenter
             Layout.minimumWidth: fpsMaxTextMetrics.width
             Layout.maximumWidth: fpsMaxTextMetrics.width
 

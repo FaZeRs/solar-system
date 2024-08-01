@@ -25,11 +25,36 @@ ApplicationWindow {
     }
 
     menuBar: App.MenuBar {
+        id: menuBar
+        objectName: "menuBar"
+        width: parent.width
     }
 
-    App.ChatView {
+    header: App.ToolBar {
+        id: toolBar
+    }
+
+    StackView {
+        id: stack
+        anchors.left: parent.left
+        anchors.top: toolBar.bottom
+        anchors.right: parent.right
+        anchors.bottom: statusBar.top
+
+        App.ChatView {
+
+        }
     }
     
+    footer: App.StatusBar {
+        id: statusBar
+        objectName: "statusBar"
+        parent: ApplicationWindow.window.contentItem
+        width: parent.width
+        anchors.bottom: parent.bottom
+    }
+
+
     App.AboutDialog {
         id: aboutDialog
         anchors.centerIn: parent

@@ -3,13 +3,6 @@ import QtQuick.Controls
 
 MenuBar {
     spacing: 10
-    
-    Action {
-        id: newAction
-        text: qsTr("New")
-        shortcut: settings.newShortcut
-        onTriggered: console.log("New action triggered");
-    }
 
     Action {
         id: quitAction

@@ -47,10 +47,6 @@ ColumnLayout {
                     id: shortcutModel
 
                     ShortcutRow {
-                        shortcutName: "newShortcut"
-                        shortcutDisplayName: qsTr("New Chat")
-                    }
-                    ShortcutRow {
                         shortcutName: "quitShortcut"
                         shortcutDisplayName: qsTr("Quit")
                     }

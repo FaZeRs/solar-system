@@ -22,8 +22,6 @@ jobs:
     runs-on: ${{ matrix.os }}
     permissions:
       contents: write
-    concurrency:
-      group: ${{ github.workflow }}-${{ github.ref }}
     strategy:
       fail-fast: false
       matrix:

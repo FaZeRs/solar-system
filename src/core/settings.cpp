@@ -31,7 +31,7 @@ qreal Settings::windowOpacity() const {
                                    : defaultWindowOpacity();
 }
 
-void Settings::setWindowOpacity(qreal opacity) {
+void Settings::setWindowOpacity(const qreal opacity) {
   if (windowOpacity() == opacity) return;
 
   setValue("windowOpacity", opacity);
@@ -45,61 +45,41 @@ bool Settings::isFpsVisible() const {
                                 : defaultFpsVisible();
 }
 
-void Settings::setFpsVisible(bool fpsVisible) {
-  if (fpsVisible == value("fpsVisible", defaultFpsVisible()).toBool()) return;
+void Settings::setFpsVisible(const bool fps_visible) {
+  if (fps_visible == value("fpsVisible", defaultFpsVisible()).toBool()) return;
 
-  setValue("fpsVisible", fpsVisible);
+  setValue("fpsVisible", fps_visible);
   emit fpsVisibleChanged();
 }
 
 void Settings::resetShortcutsToDefaults() {
-  static QVector<QString> allShortcuts;
-  if (allShortcuts.isEmpty()) {
-    allShortcuts.append(QLatin1String("newShortcut"));
-    allShortcuts.append(QLatin1String("openShortcut"));
-    allShortcuts.append(QLatin1String("saveShortcut"));
-    allShortcuts.append(QLatin1String("saveAsShortcut"));
-    allShortcuts.append(QLatin1String("quitShortcut"));
-    allShortcuts.append(QLatin1String("undoShortcut"));
-    allShortcuts.append(QLatin1String("redoShortcut"));
-    allShortcuts.append(QLatin1String("copyShortcut"));
-    allShortcuts.append(QLatin1String("cutShortcut"));
-    allShortcuts.append(QLatin1String("pasteShortcut"));
-    allShortcuts.append(QLatin1String("optionsShortcut"));
-    allShortcuts.append(QLatin1String("fullScreenToggleShortcut"));
+  static QVector<QString> all_shortcuts;
+  if (all_shortcuts.isEmpty()) {
+    all_shortcuts.append(QLatin1String("quitShortcut"));
+    all_shortcuts.append(QLatin1String("optionsShortcut"));
+    all_shortcuts.append(QLatin1String("fullScreenToggleShortcut"));
   }
 
-  foreach (const QString &shortcut, allShortcuts) {
+  foreach (const QString &shortcut, all_shortcuts) {
     remove(shortcut);
   }
 }
 
-#define GET_SHORTCUT(shortcutName, defaultValueFunction)         \
-  return contains(shortcutName) ? value(shortcutName).toString() \
-                                : defaultValueFunction();
+#define GET_SHORTCUT(shortcut_name, defaultValueFunction)          \
+  return contains(shortcut_name) ? value(shortcut_name).toString() \
+                                 : defaultValueFunction();
 
-#define SET_SHORTCUT(shortcutName, defaultValueFunction, notifySignal) \
-  QVariant existingValue = value(shortcutName);                        \
-  QString existingStringValue = defaultValueFunction();                \
-  if (contains(shortcutName)) {                                        \
-    existingStringValue = existingValue.toString();                    \
-  }                                                                    \
-                                                                       \
-  if (shortcut == existingStringValue) return;                         \
-                                                                       \
-  setValue(shortcutName, shortcut);                                    \
+#define SET_SHORTCUT(shortcut_name, defaultValueFunction, notifySignal) \
+  const QVariant existing_value = value(shortcut_name);                 \
+  QString existing_string_value = defaultValueFunction();               \
+  if (contains(shortcut_name)) {                                        \
+    existing_string_value = existing_value.toString();                  \
+  }                                                                     \
+                                                                        \
+  if (shortcut == existing_string_value) return;                        \
+                                                                        \
+  setValue(shortcut_name, shortcut);                                    \
   emit notifySignal();
-
-QString Settings::defaultNewShortcut() const {
-  return QKeySequence(QKeySequence::New).toString();
-}
-
-QString Settings::newShortcut() const {
-  GET_SHORTCUT("newShortcut", defaultNewShortcut)
-}
-
-void Settings::setNewShortcut(const QString &shortcut){
-    SET_SHORTCUT("newShortcut", defaultNewShortcut, newShortcutChanged)}
 
 QString Settings::defaultQuitShortcut() const {
   return QKeySequence(QKeySequence::Quit).toString();

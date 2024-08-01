@@ -61,16 +61,6 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     libs::project_warnings
 )
 
-if(USE_OPENMP)
-    find_package(OpenMP)
-
-    if(OpenMP_CXX_FOUND)
-        target_link_libraries(${CMAKE_PROJECT_NAME} PUBLIC OpenMP::OpenMP_CXX)
-    else()
-        message(${WARNING_MESSAGE} "OpenMP requested but library not found")
-    endif()
-endif()
-
 target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     Qt::Core
     Qt::Gui
@@ -82,17 +72,13 @@ target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE
 
 target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include")
 
-if(USE_SPDLOG)
-    target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE USE_SPDLOG)
-    target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE spdlog::spdlog)
-endif()
-
 if(USE_SENTRY)
     target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE USE_SENTRY)
     target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE sentry::sentry)
 endif()
 
 include(${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
+
 if(ENABLE_CPPCHECK)
     enable_cppcheck(${CMAKE_PROJECT_NAME} ${WARNINGS_AS_ERRORS} "")
 endif()

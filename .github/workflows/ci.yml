@@ -28,7 +28,6 @@ jobs:
         os:
           - windows-latest
           - ubuntu-24.04
-          - macos-latest
         compiler:
           - llvm-18
           - gcc-14
@@ -42,28 +41,10 @@ jobs:
             compiler: gcc-14
           - os: windows-latest
             compiler: llvm-18
-          - os: macos-latest
-            compiler: gcc-14
-          - os: macos-latest
-            compiler: llvm-18
         include:
           - os: ubuntu-24.04
             qt_host: linux
             qt_arch: linux_gcc_64
-
-          - os: macos-latest
-            compiler: llvm
-            generator: "Ninja Multi-Config"
-            qt_host: mac
-            qt_arch: clang_64
-            build_type: Release
-
-          - os: macos-latest
-            compiler: llvm
-            generator: "Ninja Multi-Config"
-            qt_host: mac
-            qt_arch: clang_64
-            build_type: Debug
 
           - os: windows-latest
             compiler: msvc

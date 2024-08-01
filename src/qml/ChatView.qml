@@ -15,9 +15,9 @@ ColumnLayout {
         clip: true
         model: chatBackend.model
         delegate: Rectangle {
-            width: ListView.view.width
+            x: model.isUser ? 0 : chatList.width - width
+            width: Math.min(messageText.implicitWidth + 24, (chatList.width * 0.8))
             height: messageText.implicitHeight + 20
-            // color: isUser ? "#e6e6e6" : "#f0f0f0"
             gradient: Gradient {
                 orientation: Gradient.Horizontal
                 GradientStop { position: -0.2; color: model.isUser ? "#252B35" : "#32CEF2" }

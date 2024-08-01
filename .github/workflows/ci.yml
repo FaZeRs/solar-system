@@ -52,7 +52,7 @@ jobs:
             qt_arch: linux_gcc_64
 
           - os: macos-latest
-            compiler: llvm-17
+            compiler: llvm
             qt_host: mac
             qt_arch: clang_64
 

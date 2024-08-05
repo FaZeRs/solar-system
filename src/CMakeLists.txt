@@ -1,18 +1,14 @@
 configure_file("config.h.in" "${CMAKE_BINARY_DIR}/configured_files/include/config.h" ESCAPE_QUOTES)
 
-find_package(QT NAMES Qt6 REQUIRED COMPONENTS Core)
-find_package(Qt${QT_VERSION_MAJOR} REQUIRED COMPONENTS Gui Qml Quick QuickControls2 Widgets)
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
 qt_standard_project_setup()
 
+add_subdirectory(chat)
 add_subdirectory(quick)
+add_subdirectory(core)
 
 set(SOURCE_FILES
-    main.cpp
-    core/application.cpp
-    core/settings.cpp
-    chat/backend.cpp
-    chat/message.cpp
-    chat/model.cpp)
+    main.cpp)
 
 set(QML_FILES
     qml/main.qml
@@ -32,10 +28,6 @@ set(RESOURCE_FILES
     assets/fonts/font-awesome-regular.otf
     assets/fonts/font-awesome-solid.otf
     assets/fonts/font-awesome-brands.otf)
-
-set(QUICK_FILES
-    quick/keysequenceeditor.h
-    quick/keysequenceeditor.cpp)
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
     ${SOURCE_FILES})
@@ -59,23 +51,14 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     libs::project_options
     libs::project_warnings
+    libs::chat
+    libs::core
+    quick_widgetsplugin
 )
 
 target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     Qt::Core
-    Qt::Gui
-    Qt::Quick
-    Qt::QuickControls2
-    Qt::Qml
-    Qt::Widgets
-    quick_widgetsplugin)
-
-target_include_directories(${CMAKE_PROJECT_NAME} PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include")
-
-if(USE_SENTRY)
-    target_compile_definitions(${CMAKE_PROJECT_NAME} PRIVATE USE_SENTRY)
-    target_link_system_libraries(${CMAKE_PROJECT_NAME} PRIVATE sentry::sentry)
-endif()
+    Qt::Gui)
 
 include(${CMAKE_SOURCE_DIR}/cmake/StaticAnalyzers.cmake)
 

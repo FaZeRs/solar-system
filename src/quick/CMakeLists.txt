@@ -1,3 +1,5 @@
+find_package(Qt6 REQUIRED COMPONENTS Quick)
+
 set(QUICK_FILES
     keysequenceeditor.h
     keysequenceeditor.cpp)

@@ -1,9 +1,10 @@
 #pragma once
 
+#include <backend.h>
+
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
-#include "../chat/backend.h"
 #include "settings.h"
 
 namespace llm_chat {

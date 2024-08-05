@@ -57,7 +57,7 @@ void Settings::resetShortcutsToDefaults() {
   if (all_shortcuts.isEmpty()) {
     all_shortcuts.append(QLatin1String("quitShortcut"));
     all_shortcuts.append(QLatin1String("optionsShortcut"));
-    all_shortcuts.append(QLatin1String("fullScreenToggleShortcut"));
+    all_shortcuts.append(QLatin1String("fullScreenShortcut"));
   }
 
   foreach (const QString &shortcut, all_shortcuts) {

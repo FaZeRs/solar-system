@@ -82,7 +82,7 @@ void Settings::resetShortcutsToDefaults() {
   emit notifySignal();
 
 QString Settings::defaultQuitShortcut() const {
-  return QKeySequence(QKeySequence::Quit).toString();
+  return QKeySequence(Qt::CTRL | Qt::Key_Q).toString();
 }
 
 QString Settings::quitShortcut() const {
@@ -92,7 +92,7 @@ void Settings::setQuitShortcut(const QString &shortcut){
     SET_SHORTCUT("quitShortcut", defaultQuitShortcut, quitShortcutChanged)}
 
 QString Settings::defaultOptionsShortcut() const {
-  return QKeySequence(QKeySequence::Preferences).toString();
+  return QKeySequence(Qt::CTRL | Qt::Key_O).toString();
 }
 
 QString Settings::optionsShortcut() const {
@@ -104,7 +104,7 @@ void Settings::setOptionsShortcut(const QString &shortcut){
                  optionsShortcutChanged)}
 
 QString Settings::defaultFullScreenShortcut() const {
-  return QKeySequence(QKeySequence::FullScreen).toString();
+  return QKeySequence(Qt::CTRL | Qt::Key_F).toString();
 }
 
 QString Settings::fullScreenShortcut() const {

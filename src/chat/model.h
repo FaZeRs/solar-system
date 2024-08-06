@@ -14,7 +14,7 @@ class ChatModel : public QAbstractListModel {
 
  public:
   /// @brief The data roles for the model.
-  enum MessageRoles { TextRole = Qt::UserRole + 1, IsUserRole };
+  enum MessageRoles { TextRole = Qt::UserRole + 1, IsUserRole, ContextRole };
 
   /// @brief Constructs a new ChatModel object.
   /// @param parent The parent object.

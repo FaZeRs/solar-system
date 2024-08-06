@@ -7,91 +7,89 @@ class SettingsTest : public QObject {
   Q_OBJECT
 
  private slots:
-  void initTestCase() {
-    // Called before the first test case is executed
-    settings = new llm_chat::Settings();
-  }
-
-  void cleanupTestCase() {
-    // Called after the last test case is executed
-    delete settings;
-  }
-
-  void testDefaultValues() {
-    QCOMPARE(settings->defaultLanguage(), QString("en_GB"));
-    QCOMPARE(settings->defaultWindowOpacity(), 1.0);
-    QCOMPARE(settings->defaultFpsVisible(), false);
-    QCOMPARE(settings->defaultQuitShortcut(), QString("Ctrl+Q"));
-    QCOMPARE(settings->defaultOptionsShortcut(), QString("Ctrl+O"));
-    QCOMPARE(settings->defaultFullScreenShortcut(), QString("Ctrl+F"));
-  }
-
-  void testLanguage() {
-    settings->setLanguage("fr");
-    QCOMPARE(settings->language(), QString("fr"));
-    QSignalSpy spy(settings, &llm_chat::Settings::languageChanged);
-    settings->setLanguage("de");
-    QCOMPARE(spy.count(), 1);
-    QCOMPARE(settings->language(), QString("de"));
-  }
-
-  void testWindowOpacity() {
-    settings->setWindowOpacity(0.8);
-    QCOMPARE(settings->windowOpacity(), 0.8);
-    QSignalSpy spy(settings, &llm_chat::Settings::windowOpacityChanged);
-    settings->setWindowOpacity(0.5);
-    QCOMPARE(spy.count(), 1);
-    QCOMPARE(settings->windowOpacity(), 0.5);
-  }
-
-  void testFpsVisible() {
-    settings->setFpsVisible(true);
-    QCOMPARE(settings->isFpsVisible(), true);
-    QSignalSpy spy(settings, &llm_chat::Settings::fpsVisibleChanged);
-    settings->setFpsVisible(false);
-    QCOMPARE(spy.count(), 1);
-    QCOMPARE(settings->isFpsVisible(), false);
-  }
-
-  void testShortcuts() {
-    settings->setQuitShortcut("Ctrl+X");
-    QCOMPARE(settings->quitShortcut(), QString("Ctrl+X"));
-    QSignalSpy quitSpy(settings, &llm_chat::Settings::quitShortcutChanged);
-    settings->setQuitShortcut("Ctrl+Q");
-    QCOMPARE(quitSpy.count(), 1);
-    QCOMPARE(settings->quitShortcut(), QString("Ctrl+Q"));
-
-    settings->setOptionsShortcut("Ctrl+P");
-    QCOMPARE(settings->optionsShortcut(), QString("Ctrl+P"));
-    QSignalSpy optionsSpy(settings,
-                          &llm_chat::Settings::optionsShortcutChanged);
-    settings->setOptionsShortcut("Ctrl+O");
-    QCOMPARE(optionsSpy.count(), 1);
-    QCOMPARE(settings->optionsShortcut(), QString("Ctrl+O"));
-
-    settings->setFullScreenShortcut("Ctrl+G");
-    QCOMPARE(settings->fullScreenShortcut(), QString("Ctrl+G"));
-    QSignalSpy fullScreenSpy(settings,
-                             &llm_chat::Settings::fullScreenShortcutChanged);
-    settings->setFullScreenShortcut("Ctrl+F");
-    QCOMPARE(fullScreenSpy.count(), 1);
-    QCOMPARE(settings->fullScreenShortcut(), QString("Ctrl+F"));
-  }
-
-  void testResetShortcutsToDefaults() {
-    settings->setQuitShortcut("Ctrl+X");
-    settings->setOptionsShortcut("Ctrl+P");
-    settings->setFullScreenShortcut("Ctrl+G");
-    settings->resetShortcutsToDefaults();
-    QCOMPARE(settings->quitShortcut(), settings->defaultQuitShortcut());
-    QCOMPARE(settings->optionsShortcut(), settings->defaultOptionsShortcut());
-    QCOMPARE(settings->fullScreenShortcut(),
-             settings->defaultFullScreenShortcut());
-  }
+  void testDefaultValues() const;
+  void testLanguage();
+  void testWindowOpacity();
+  void testFpsVisible();
+  void testShortcuts();
+  void testResetShortcutsToDefaults();
 
  private:
-  llm_chat::Settings* settings;
+  QScopedPointer<llm_chat::Settings> m_Settings{new llm_chat::Settings()};
 };
+
+void SettingsTest::testDefaultValues() const {
+  QCOMPARE(m_Settings->defaultLanguage(), QString("en_GB"));
+  QCOMPARE(m_Settings->defaultWindowOpacity(), 1.0);
+  QCOMPARE(m_Settings->defaultFpsVisible(), false);
+  QCOMPARE(m_Settings->defaultQuitShortcut(), QString("Ctrl+Q"));
+  QCOMPARE(m_Settings->defaultOptionsShortcut(), QString("Ctrl+O"));
+  QCOMPARE(m_Settings->defaultFullScreenShortcut(), QString("Ctrl+F"));
+}
+
+void SettingsTest::testLanguage() {
+  m_Settings->setLanguage("fr");
+  QCOMPARE(m_Settings->language(), QString("fr"));
+  QSignalSpy spy(m_Settings.get(), &llm_chat::Settings::languageChanged);
+  m_Settings->setLanguage("de");
+  QCOMPARE(spy.count(), 1);
+  QCOMPARE(m_Settings->language(), QString("de"));
+}
+
+void SettingsTest::testWindowOpacity() {
+  m_Settings->setWindowOpacity(0.8);
+  QCOMPARE(m_Settings->windowOpacity(), 0.8);
+  QSignalSpy spy(m_Settings.get(), &llm_chat::Settings::windowOpacityChanged);
+  m_Settings->setWindowOpacity(0.5);
+  QCOMPARE(spy.count(), 1);
+  QCOMPARE(m_Settings->windowOpacity(), 0.5);
+}
+
+void SettingsTest::testFpsVisible() {
+  m_Settings->setFpsVisible(true);
+  QCOMPARE(m_Settings->isFpsVisible(), true);
+  QSignalSpy spy(m_Settings.get(), &llm_chat::Settings::fpsVisibleChanged);
+  m_Settings->setFpsVisible(false);
+  QCOMPARE(spy.count(), 1);
+  QCOMPARE(m_Settings->isFpsVisible(), false);
+}
+
+void SettingsTest::testShortcuts() {
+  m_Settings->setQuitShortcut("Ctrl+X");
+  QCOMPARE(m_Settings->quitShortcut(), QString("Ctrl+X"));
+  QSignalSpy quitSpy(m_Settings.get(),
+                     &llm_chat::Settings::quitShortcutChanged);
+  m_Settings->setQuitShortcut("Ctrl+Q");
+  QCOMPARE(quitSpy.count(), 1);
+  QCOMPARE(m_Settings->quitShortcut(), QString("Ctrl+Q"));
+
+  m_Settings->setOptionsShortcut("Ctrl+P");
+  QCOMPARE(m_Settings->optionsShortcut(), QString("Ctrl+P"));
+  QSignalSpy optionsSpy(m_Settings.get(),
+                        &llm_chat::Settings::optionsShortcutChanged);
+  m_Settings->setOptionsShortcut("Ctrl+O");
+  QCOMPARE(optionsSpy.count(), 1);
+  QCOMPARE(m_Settings->optionsShortcut(), QString("Ctrl+O"));
+
+  m_Settings->setFullScreenShortcut("Ctrl+G");
+  QCOMPARE(m_Settings->fullScreenShortcut(), QString("Ctrl+G"));
+  QSignalSpy fullScreenSpy(m_Settings.get(),
+                           &llm_chat::Settings::fullScreenShortcutChanged);
+  m_Settings->setFullScreenShortcut("Ctrl+F");
+  QCOMPARE(fullScreenSpy.count(), 1);
+  QCOMPARE(m_Settings->fullScreenShortcut(), QString("Ctrl+F"));
+}
+
+void SettingsTest::testResetShortcutsToDefaults() {
+  m_Settings->setQuitShortcut("Ctrl+X");
+  m_Settings->setOptionsShortcut("Ctrl+P");
+  m_Settings->setFullScreenShortcut("Ctrl+G");
+  m_Settings->resetShortcutsToDefaults();
+  QCOMPARE(m_Settings->quitShortcut(), m_Settings->defaultQuitShortcut());
+  QCOMPARE(m_Settings->optionsShortcut(), m_Settings->defaultOptionsShortcut());
+  QCOMPARE(m_Settings->fullScreenShortcut(),
+           m_Settings->defaultFullScreenShortcut());
+}
 
 QTEST_MAIN(SettingsTest)
 #include "tst_settings.moc"

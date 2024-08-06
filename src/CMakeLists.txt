@@ -7,9 +7,6 @@ add_subdirectory(chat)
 add_subdirectory(quick)
 add_subdirectory(core)
 
-set(SOURCE_FILES
-    main.cpp)
-
 set(QML_FILES
     qml/main.qml
     qml/MenuBar.qml
@@ -29,8 +26,7 @@ set(RESOURCE_FILES
     assets/fonts/font-awesome-solid.otf
     assets/fonts/font-awesome-brands.otf)
 
-qt_add_executable(${CMAKE_PROJECT_NAME}
-    ${SOURCE_FILES})
+qt_add_executable(${CMAKE_PROJECT_NAME} main.cpp)
 
 qt_add_qml_module(${CMAKE_PROJECT_NAME}
     URI llm_chat

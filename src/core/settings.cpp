@@ -6,7 +6,7 @@
 #include <QVariant>
 #include <QVector>
 
-namespace llm_chat {
+namespace solar_system {
 
 Settings::Settings(QObject *parent) : QSettings(parent) {}
 
@@ -116,4 +116,4 @@ void Settings::setFullScreenShortcut(const QString &shortcut) {
                fullScreenShortcutChanged)
 }
 
-}  // namespace llm_chat
+}  // namespace solar_system

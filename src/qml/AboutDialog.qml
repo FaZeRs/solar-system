@@ -16,7 +16,7 @@ Dialog {
         spacing: 12
 
         Label {
-            text: qsTr("LLM-Chat")
+            text: qsTr("Solar-System")
         }
 
         Label {

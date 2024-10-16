@@ -2,9 +2,9 @@ cmake_minimum_required(VERSION 3.27)
 
 include(cmake/Version.cmake)
 
-project(llm-chat
+project(solar-system
   VERSION ${VERSION_SHORT}
-  DESCRIPTION "LLM-Chat"
+  DESCRIPTION "Solar System"
   HOMEPAGE_URL "https://naurislinde.dev"
   LANGUAGES CXX C)
 
@@ -84,11 +84,10 @@ add_subdirectory(src)
 
 include(cmake/CPack.cmake)
 
-if(COMPILE_TESTS)
-  enable_testing()
-  add_subdirectory(tests)
-endif()
-
+# if(COMPILE_TESTS)
+# enable_testing()
+# add_subdirectory(tests)
+# endif()
 if(ENABLE_DOCS)
   include(cmake/Doxygen.cmake)
   enable_doxygen("")

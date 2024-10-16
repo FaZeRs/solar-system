@@ -12,7 +12,6 @@ target_include_directories(core
 target_link_libraries(core PRIVATE
     libs::project_options
     libs::project_warnings
-    libs::chat
 )
 
 target_link_system_libraries(core PRIVATE

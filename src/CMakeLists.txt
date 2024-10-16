@@ -3,7 +3,6 @@ configure_file("config.h.in" "${CMAKE_BINARY_DIR}/configured_files/include/confi
 find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick)
 qt_standard_project_setup()
 
-add_subdirectory(chat)
 add_subdirectory(quick)
 add_subdirectory(core)
 
@@ -19,7 +18,8 @@ set(QML_FILES
     qml/FpsCounter.qml
     qml/ToolBar.qml
     qml/ToolButton.qml
-    qml/ChatView.qml)
+    qml/Sun.qml
+    qml/Earth.qml)
 
 set(RESOURCE_FILES
     assets/fonts/font-awesome-regular.otf
@@ -28,17 +28,25 @@ set(RESOURCE_FILES
 
 qt_add_executable(${CMAKE_PROJECT_NAME} main.cpp)
 
-qt_add_qml_module(${CMAKE_PROJECT_NAME}
-    URI llm_chat
-    VERSION 1.0
-    QML_FILES ${QML_FILES}
-    RESOURCES qtquickcontrols2.conf
-    NO_RESOURCE_TARGET_PATH)
-
 qt_add_resources(${CMAKE_PROJECT_NAME} "assets"
     PREFIX "/"
     FILES ${RESOURCE_FILES}
 )
+
+set(QML_RESOURCE_FILES
+    qtquickcontrols2.conf
+    qml/assets/maps/sun.png
+    qml/assets/meshes/sun.mesh
+    qml/assets/maps/earth_color.png
+    qml/assets/maps/earth_normals.png
+    qml/assets/meshes/earth.mesh)
+
+qt_add_qml_module(${CMAKE_PROJECT_NAME}
+    URI solar_system
+    VERSION 1.0
+    QML_FILES ${QML_FILES}
+    RESOURCES ${QML_RESOURCE_FILES}
+    NO_RESOURCE_TARGET_PATH)
 
 set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
     MACOSX_BUNDLE TRUE
@@ -47,7 +55,6 @@ set_target_properties(${CMAKE_PROJECT_NAME} PROPERTIES
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
     libs::project_options
     libs::project_warnings
-    libs::chat
     libs::core
     quick_widgetsplugin
 )
@@ -76,7 +83,7 @@ install(TARGETS ${CMAKE_PROJECT_NAME}
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR})
 
-# Generate the deployment script for the target LLM-Chat.
+# Generate the deployment script for the target Solar-System.
 qt_generate_deploy_qml_app_script(
     TARGET ${CMAKE_PROJECT_NAME}
     OUTPUT_SCRIPT deploy_script

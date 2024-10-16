@@ -8,7 +8,7 @@
 
 class QObject;
 
-namespace llm_chat {
+namespace solar_system {
 
 /// @brief The Settings class is a wrapper around QSettings that provides a more
 /// convenient interface for accessing and modifying application settings.
@@ -111,4 +111,4 @@ class Settings : public QSettings {
   void fullScreenShortcutChanged();
 };
 
-}  // namespace llm_chat
+}  // namespace solar_system

@@ -50,7 +50,7 @@ static void sentryMessageHandler(QtMsgType type,
 }
 #endif
 
-namespace llm_chat {
+namespace solar_system {
 
 /// @brief Creates the application.
 /// @param argc The number of arguments.
@@ -85,8 +85,6 @@ Application::Application(int& argc, char** argv)
   addFonts();
 
   m_Engine->rootContext()->setContextProperty("settings", m_Settings.get());
-  m_Engine->rootContext()->setContextProperty("chatBackend",
-                                              m_ChatBackend.get());
   m_Engine->load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
   if (m_Engine->rootObjects().isEmpty()) qWarning("Failed to load main.qml");
 }
@@ -110,10 +108,7 @@ void Application::initializeSentry() {
 #endif
 }
 
-void Application::registerQmlTypes() const {
-  qRegisterMetaType<Settings*>();
-  qRegisterMetaType<ChatModel*>();
-}
+void Application::registerQmlTypes() const { qRegisterMetaType<Settings*>(); }
 
 void Application::addFonts() const {
   QFontDatabase::addApplicationFont(":/assets/fonts/font-awesome-regular.otf");
@@ -121,4 +116,4 @@ void Application::addFonts() const {
   QFontDatabase::addApplicationFont(":/assets/fonts/font-awesome-brands.otf");
 }
 
-}  // namespace llm_chat
+}  // namespace solar_system

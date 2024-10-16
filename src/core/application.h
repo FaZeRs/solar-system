@@ -1,13 +1,11 @@
 #pragma once
 
-#include <backend.h>
-
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
 #include "settings.h"
 
-namespace llm_chat {
+namespace solar_system {
 
 /// @brief The main application class.
 class Application {
@@ -40,8 +38,7 @@ class Application {
 
   QScopedPointer<QGuiApplication> m_Application;
   QScopedPointer<Settings> m_Settings{new Settings()};
-  QScopedPointer<ChatBackend> m_ChatBackend{new ChatBackend()};
   QScopedPointer<QQmlApplicationEngine> m_Engine{new QQmlApplicationEngine};
 };
 
-}  // namespace llm_chat
+}  // namespace solar_system

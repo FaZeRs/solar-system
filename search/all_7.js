@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['keypressevent_0',['keyPressEvent',['../classKeySequenceEditor.html#ad801ae06684f897e73bd24b5fd13fa66',1,'KeySequenceEditor']]],
-  ['keyreleaseevent_1',['keyReleaseEvent',['../classKeySequenceEditor.html#ae8579a8b9bf44b864b5ba21dafb74562',1,'KeySequenceEditor']]],
-  ['keysequenceeditor_2',['KeySequenceEditor',['../classKeySequenceEditor.html',1,'KeySequenceEditor'],['../classKeySequenceEditor.html#aa159b6168ae6d816a35e3faee4f6e9e4',1,'KeySequenceEditor::KeySequenceEditor()']]],
-  ['keysequenceeditor_2ecpp_3',['keysequenceeditor.cpp',['../keysequenceeditor_8cpp.html',1,'']]],
-  ['keysequenceeditor_2eh_4',['keysequenceeditor.h',['../keysequenceeditor_8h.html',1,'']]]
+  ['language_0',['language',['../classsolar__system_1_1Settings.html#aa534eab46a735d1fdb566c2aebaf334f',1,'solar_system::Settings::language'],['../classsolar__system_1_1Settings.html#add0451262dbf6710943f19b65a1c26e6',1,'solar_system::Settings::language() const']]],
+  ['languagechanged_1',['languageChanged',['../classsolar__system_1_1Settings.html#a60f8db8ea43fafb18e59bb2457872d3c',1,'solar_system::Settings']]]
 ];

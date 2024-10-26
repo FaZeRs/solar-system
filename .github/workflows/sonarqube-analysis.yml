@@ -7,10 +7,6 @@ on:
   pull_request:
     types: [opened, synchronize, reopened]
 
-env:
-  CPM_SOURCE_CACHE: ~/.cache/CPM
-  VERBOSE: 1
-
 jobs:
   build:
     name: Build and analyze

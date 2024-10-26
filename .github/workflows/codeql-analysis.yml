@@ -8,10 +8,6 @@ on:
   schedule:
     - cron: "38 0 * * 5"
 
-env:
-  CPM_SOURCE_CACHE: ~/.cache/CPM
-  VERBOSE: 1
-
 jobs:
   analyze:
     name: Analyze

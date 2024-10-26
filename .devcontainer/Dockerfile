@@ -1,13 +1,20 @@
-ARG VARIANT="focal"
+ARG VARIANT="noble"
 FROM ubuntu:${VARIANT}
 
 LABEL maintainer="Nauris Linde <nauris.linde@giraffe360.com>"
 LABEL company="Giraffe360"
-LABEL description="Development environment for GPT Chat"
+LABEL description="Development environment for Solar System 3D"
 LABEL version="1.0"
 
 # Restate the variant to use it later on in the llvm and cmake installations
 ARG VARIANT
+RUN if [ "$VARIANT" = "noble" ]; then \
+    if id "ubuntu" &>/dev/null; then \
+    echo "Deleting user 'ubuntu'  for $VARIANT" && userdel -f -r ubuntu || echo "Failed to delete ubuntu user for $VARIANT"; \
+    else \
+    echo "User 'ubuntu' does not exist for $VARIANT"; \
+    fi; \
+    fi
 
 ARG USERNAME=vscode
 ARG USER_UID=1000
@@ -41,7 +48,7 @@ RUN apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
 # User-settable versions:
 # This Dockerfile should support gcc-[7, 8, 9, 10, 11, 12, 13] and clang-[10, 11, 12, 13, 14, 15, 16]
 # Earlier versions of clang will require significant modifications to the IWYU section
-ARG GCC_VER="11"
+ARG GCC_VER="14"
 # Add gcc-${GCC_VER}
 RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test && \
     apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
@@ -52,7 +59,7 @@ RUN add-apt-repository -y ppa:ubuntu-toolchain-r/test && \
 RUN update-alternatives --install /usr/bin/gcc gcc $(which gcc-${GCC_VER}) 100
 RUN update-alternatives --install /usr/bin/g++ g++ $(which g++-${GCC_VER}) 100
 
-ARG LLVM_VER="13"
+ARG LLVM_VER="18"
 # Add clang-${LLVM_VER}
 ARG LLVM_URL="http://apt.llvm.org/${VARIANT}/"
 ARG LLVM_PKG="llvm-toolchain-${VARIANT}-${LLVM_VER}"
@@ -77,7 +84,7 @@ RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/nul
     echo "deb [signed-by=/usr/share/keyrings/kitware-archive-keyring.gpg] https://apt.kitware.com/ubuntu/ ${CMAKE_PKG} main" | tee /etc/apt/sources.list.d/kitware.list >/dev/null && \
     apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
     rm /usr/share/keyrings/kitware-archive-keyring.gpg && \
-    apt-get install -y --no-install-recommends kitware-archive-keyring cmake cmake-curses-gui
+    apt-get install -y --no-install-recommends kitware-archive-keyring cmake cmake-curses-gui cmake-format
 
 # Install editors
 RUN apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
@@ -87,11 +94,7 @@ RUN apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
 # Install optional dependecies
 RUN apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
     apt-get install -y --no-install-recommends \
-    doxygen graphviz ccache cppcheck libomp-dev
-
-# Install NodeJS
-RUN curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - && \
-    apt-get install -y nodejs
+    doxygen graphviz ccache cppcheck libomp-dev nodejs default-jdk
 
 # Install .NET SDK
 RUN apt-get update -qq && export DEBIAN_FRONTEND=noninteractive && \
@@ -125,9 +128,9 @@ ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
 # Install QT
-RUN pip3 install aqtinstall
+RUN pip3 install --no-cache-dir --break-system-packages aqtinstall
 
-ARG QT_VERSION=6.7.0
+ARG QT_VERSION=6.8.0
 ARG QT_PATH=/opt/qt
 ARG QT_MODULES=all
 ARG QT_HOST=linux

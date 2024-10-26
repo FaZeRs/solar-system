@@ -1,0 +1,7 @@
+<map id="solar_system::Settings::defaultOptionsShortcut" name="solar_system::Settings::defaultOptionsShortcut">
+<area shape="rect" id="Node000001" title="Returns the default options shortcut for the application." alt="" coords="224,37,404,77"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#ae0a11d981c475dd027d3d31a40180e8f" title="Returns the current options shortcut for the application." alt="" coords="5,5,176,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,45,176,40,176,35,211,40"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a1c3beec849803d6babfaf3cf72ff7457" title="Sets the current options shortcut for the application." alt="" coords="5,69,176,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,75,176,80,176,74,210,70"/>
+</map>

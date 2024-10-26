@@ -1,0 +1,7 @@
+<map id="solar_system::Settings::defaultFpsVisible" name="solar_system::Settings::defaultFpsVisible">
+<area shape="rect" id="Node000001" title="Returns the default FPS visibility for the application." alt="" coords="224,37,395,77"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a9b9700382557b31f3734f6d91a3119b8" title="Returns the current FPS visibility for the application." alt="" coords="5,5,176,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,46,176,40,177,35,211,40"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#ae7d1fbd1fbb2b916a20ea03d0b0e62e6" title="Sets the current FPS visibility for the application." alt="" coords="5,69,176,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,74,177,79,176,74,210,69"/>
+</map>

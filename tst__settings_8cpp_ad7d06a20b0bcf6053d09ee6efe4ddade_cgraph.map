@@ -1,0 +1,10 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,100,67"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a16f10e8241d57ea76d74d53cf1836dcf" title="Emitted when the options shortcut is changed." alt="" coords="367,5,556,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,49,353,30,353,36,100,54"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a1c3beec849803d6babfaf3cf72ff7457" title="Sets the current options shortcut for the application." alt="" coords="148,63,319,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,59,135,65,134,70,100,65"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="313,60,368,46,369,51,314,65"/>
+<area shape="rect" id="Node000004" href="$classsolar__system_1_1Settings.html#a129d53e02ee19302cd81c6a6b453201b" title="Returns the default options shortcut for the application." alt="" coords="371,69,551,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="319,83,358,84,358,89,319,88"/>
+</map>

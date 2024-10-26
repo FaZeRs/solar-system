@@ -1,0 +1,8 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,100,67"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#acf9d396d9fb203641d3efdd09f463417" title="Sets the current window opacity for the application." alt="" coords="148,5,319,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,44,134,39,135,44,101,50"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a5716dd304f1e01e66f38820a6f933c1c" title="Emitted when the window opacity is changed." alt="" coords="367,35,553,75"/>
+<area shape="poly" id="edge3_Node000001_Node000003" title=" " alt="" coords="100,54,148,55,319,55,353,54,353,60,319,60,148,60,100,59"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="319,34,353,38,353,43,318,39"/>
+</map>

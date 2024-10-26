@@ -1,7 +1,12 @@
 <map id="solar_system::Settings::defaultFpsVisible" name="solar_system::Settings::defaultFpsVisible">
-<area shape="rect" id="Node000001" title="Returns the default FPS visibility for the application." alt="" coords="224,37,395,77"/>
-<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a9b9700382557b31f3734f6d91a3119b8" title="Returns the current FPS visibility for the application." alt="" coords="5,5,176,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,46,176,40,177,35,211,40"/>
-<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#ae7d1fbd1fbb2b916a20ea03d0b0e62e6" title="Sets the current FPS visibility for the application." alt="" coords="5,69,176,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,74,177,79,176,74,210,69"/>
+<area shape="rect" id="Node000001" title="Returns the default FPS visibility for the application." alt="" coords="367,69,537,109"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a9b9700382557b31f3734f6d91a3119b8" title="Returns the current FPS visibility for the application." alt="" coords="148,5,319,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="369,68,301,48,303,43,371,63"/>
+<area shape="rect" id="Node000004" href="$classsolar__system_1_1Settings.html#ae7d1fbd1fbb2b916a20ea03d0b0e62e6" title="Sets the current FPS visibility for the application." alt="" coords="148,69,319,109"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="353,92,319,92,319,87,353,87"/>
+<area shape="rect" id="Node000005" href="$tst__settings_8cpp.html#ad9d8c2ff30fae39b4ceba73773acf481" title=" " alt="" coords="186,134,281,159"/>
+<area shape="poly" id="edge5_Node000001_Node000005" title=" " alt="" coords="363,115,282,137,280,132,361,110"/>
+<area shape="rect" id="Node000003" href="$tst__settings_8cpp.html#ad92d094058c332311f48714e87bab29d" title=" " alt="" coords="5,45,100,70"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="135,46,101,52,100,46,134,40"/>
+<area shape="poly" id="edge4_Node000004_Node000003" title=" " alt="" coords="134,74,100,68,101,63,135,69"/>
 </map>

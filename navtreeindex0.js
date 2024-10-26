@@ -112,6 +112,7 @@ var NAVTREEINDEX0 =
 "classsolar__system_1_1Settings.html#ae7d1fbd1fbb2b916a20ea03d0b0e62e6":[1,0,0,2,18],
 "classsolar__system_1_1Settings.html#ae7d1fbd1fbb2b916a20ea03d0b0e62e6":[2,0,0,1,18],
 "dir_2c02760a18a061ded52e38125572a3e7.html":[3,0,0,1],
+"dir_59425e443f801f1f2fd8bbe4959a3ccf.html":[3,0,1],
 "dir_68267d1309a1af8e8297ef4c3efbcdba.html":[3,0,0],
 "dir_aebb8dcc11953d78e620bbef0b9e2183.html":[3,0,0,0],
 "files.html":[3,0],
@@ -140,5 +141,14 @@ var NAVTREEINDEX0 =
 "settings_8cpp.html#a723ad83cf6e7bc7adea6caad89185180":[3,0,0,0,3,1],
 "settings_8cpp.html#afb20b2c47715849d1cd737c51407631e":[3,0,0,0,3,0],
 "settings_8h.html":[3,0,0,0,4],
-"settings_8h_source.html":[3,0,0,0,4]
+"settings_8h_source.html":[3,0,0,0,4],
+"tst__settings_8cpp.html":[3,0,1,0],
+"tst__settings_8cpp.html#a21102cab53cc05cb45a7ceda014091d7":[3,0,1,0,6],
+"tst__settings_8cpp.html#a49a03d31b59881f5b1b4f7eaa97443c3":[3,0,1,0,2],
+"tst__settings_8cpp.html#a5c04d16a5a907a0efde133b34787f356":[3,0,1,0,3],
+"tst__settings_8cpp.html#abbef4b32fa1bb7655438319bdba67165":[3,0,1,0,5],
+"tst__settings_8cpp.html#ad7d06a20b0bcf6053d09ee6efe4ddade":[3,0,1,0,4],
+"tst__settings_8cpp.html#ad92d094058c332311f48714e87bab29d":[3,0,1,0,1],
+"tst__settings_8cpp.html#ad9d8c2ff30fae39b4ceba73773acf481":[3,0,1,0,0],
+"tst__settings_8cpp.html#afa4944155863b5df223df38ab12eaadf":[3,0,1,0,7]
 };

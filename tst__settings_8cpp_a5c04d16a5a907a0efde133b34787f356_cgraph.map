@@ -1,0 +1,10 @@
+<map id="TEST_CASE" name="TEST_CASE">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,42,100,67"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a60f8db8ea43fafb18e59bb2457872d3c" title="Emitted when the language is changed." alt="" coords="367,5,537,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,49,353,30,353,35,100,54"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a12b14fc1c66d460baca9c80574879334" title="Sets the current language for the application." alt="" coords="148,63,319,103"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="101,59,135,65,134,70,100,65"/>
+<area shape="poly" id="edge4_Node000003_Node000002" title=" " alt="" coords="310,60,361,46,363,51,311,65"/>
+<area shape="rect" id="Node000004" href="$classsolar__system_1_1Settings.html#a2d46f4a70926d6c873a7afa0fe120999" title="Returns the default language for the application." alt="" coords="367,69,537,109"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="319,83,353,84,353,89,319,88"/>
+</map>

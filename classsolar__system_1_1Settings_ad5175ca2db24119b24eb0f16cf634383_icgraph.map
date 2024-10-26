@@ -1,7 +1,14 @@
 <map id="solar_system::Settings::defaultQuitShortcut" name="solar_system::Settings::defaultQuitShortcut">
-<area shape="rect" id="Node000001" title="Returns the default quit shortcut for the application." alt="" coords="224,37,395,77"/>
-<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a16defee5ad9824abefdaba498ec0d960" title="Returns the current quit shortcut for the application." alt="" coords="5,5,176,45"/>
-<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="210,46,176,40,177,35,211,40"/>
-<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a2254d2cd3f6a543d9c34b62cd70f0152" title="Sets the current quit shortcut for the application." alt="" coords="5,69,176,109"/>
-<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,74,177,79,176,74,210,69"/>
+<area shape="rect" id="Node000001" title="Returns the default quit shortcut for the application." alt="" coords="367,99,537,139"/>
+<area shape="rect" id="Node000002" href="$classsolar__system_1_1Settings.html#a16defee5ad9824abefdaba498ec0d960" title="Returns the current quit shortcut for the application." alt="" coords="148,5,319,45"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="396,95,318,60,288,48,290,43,320,55,398,90"/>
+<area shape="rect" id="Node000003" href="$classsolar__system_1_1Settings.html#a2254d2cd3f6a543d9c34b62cd70f0152" title="Sets the current quit shortcut for the application." alt="" coords="148,69,319,109"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="353,108,319,103,319,98,354,103"/>
+<area shape="rect" id="Node000005" href="$tst__settings_8cpp.html#a21102cab53cc05cb45a7ceda014091d7" title=" " alt="" coords="5,130,100,155"/>
+<area shape="poly" id="edge6_Node000001_Node000005" title=" " alt="" coords="353,127,100,143,100,137,353,122"/>
+<area shape="rect" id="Node000006" href="$tst__settings_8cpp.html#ad9d8c2ff30fae39b4ceba73773acf481" title=" " alt="" coords="186,185,281,210"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="384,146,271,187,269,182,382,141"/>
+<area shape="rect" id="Node000004" href="$tst__settings_8cpp.html#abbef4b32fa1bb7655438319bdba67165" title=" " alt="" coords="5,77,100,102"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="134,92,100,92,100,87,134,87"/>
+<area shape="poly" id="edge4_Node000003_Node000005" title=" " alt="" coords="153,116,97,133,96,127,151,111"/>
 </map>

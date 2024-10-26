@@ -77,7 +77,7 @@ jobs:
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
         run: |
-          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DENABLE_DOCS:BOOL=FALSE -DCOMPILE_TESTS:BOOL=FALSE -DENABLE_CLANG_TIDY:BOOL=FALSE -DENABLE_CPPCHECK:BOOL=FALSE -DENABLE_INCLUDE_WHAT_YOU_USE:BOOL=FALSE
+          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DENABLE_DOCS:BOOL=FALSE -DCOMPILE_TESTS:BOOL=FALSE -DENABLE_COVERAGE:BOOL=FALSE -DENABLE_CLANG_TIDY:BOOL=FALSE -DENABLE_CPPCHECK:BOOL=FALSE -DENABLE_INCLUDE_WHAT_YOU_USE:BOOL=FALSE
 
       - name: Build
         working-directory: ${{ runner.workspace }}/build

@@ -116,12 +116,20 @@ jobs:
         shell: bash
         working-directory: ${{ runner.workspace }}/build
         run: |
-          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DENABLE_DOCS:BOOL=${{ matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }} -DCPACK_IFW_ROOT=$IQTA_TOOLS/QtInstallerFramework/4.7/bin
+          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DCOMPILE_TESTS:BOOL=${{ matrix.build_type == 'Debug' }} -DENABLE_COVERAGE:BOOL=${{ matrix.build_type == 'Debug' }} -DENABLE_DOCS:BOOL=${{ matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }} -DCPACK_IFW_ROOT=$IQTA_TOOLS/QtInstallerFramework/4.7/bin
 
       - name: Build
         working-directory: ${{ runner.workspace }}/build
         shell: bash
         run: cmake --build . --parallel ${{ env.nproc }} --config ${{ matrix.build_type }}
+
+      - name: Ubuntu - Test and coverage
+        if: ${{ contains(matrix.os, 'ubuntu') && matrix.build_type == 'Debug' }}
+        working-directory: ${{ runner.workspace }}/build
+        shell: bash
+        run: |
+          ctest -C ${{ matrix.build_type }} --output-on-failure
+          gcovr -j ${{ env.nproc }} --delete --root ${{ runner.workspace }}  --print-summary --xml-pretty --xml coverage.xml . --gcov-executable '${{ matrix.gcov_executable }}'
 
       - name: CPack
         if: ${{ matrix.build_type == 'Release' }}
@@ -144,3 +152,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ${{ runner.workspace }}/build/html
 
+      - name: Publish to codecov
+        if: ${{ (contains(matrix.os, 'ubuntu') || contains(matrix.os, 'windows')) && matrix.build_type == 'Debug' }}
+        uses: codecov/codecov-action@v4
+        with:
+          flags: ${{ runner.os }}
+          name: ${{ runner.os }}-${{ matrix.compiler }}-${{ matrix.generator }}-${{ matrix.build_type }}-coverage
+          files: ${{ runner.workspace }}/build/coverage.xml
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

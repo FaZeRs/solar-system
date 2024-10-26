@@ -78,7 +78,7 @@ jobs:
       - name: Configure CMake
         working-directory: ${{ runner.workspace }}/build
         run: |
-          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{matrix.build_type}}
+          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{matrix.build_type}} -DENABLE_COVERAGE:BOOL=${{ matrix.build_type == 'Debug' }}
 
       - name: Initialize CodeQL
         uses: github/codeql-action/init@v3

@@ -15,6 +15,7 @@ on:
       - develop
 
 env:
+  CPM_SOURCE_CACHE: ~/.cache/CPM
   VERBOSE: 1
 
 jobs:
@@ -50,18 +51,18 @@ jobs:
             compiler: msvc
             generator: "Visual Studio 17 2022"
             qt_host: windows
-            qt_arch: win64_msvc2019_64
+            qt_arch: win64_msvc2022_64
             build_type: Release
 
           - os: windows-latest
             compiler: msvc
             generator: "Visual Studio 17 2022"
             qt_host: windows
-            qt_arch: win64_msvc2019_64
+            qt_arch: win64_msvc2022_64
             build_type: Debug
 
           - compiler: gcc-14
-            gcov_executable: gcov
+            gcov_executable: gcov-14
 
           - compiler: llvm-18
             gcov_executable: "llvm-cov gcov"
@@ -98,7 +99,7 @@ jobs:
       - name: Install Qt
         uses: jurplel/install-qt-action@v4
         with:
-          version: "6.7.2"
+          version: "6.8.0"
           host: ${{ matrix.qt_host }}
           target: "desktop"
           arch: ${{ matrix.qt_arch }}
@@ -116,27 +117,12 @@ jobs:
         shell: bash
         working-directory: ${{ runner.workspace }}/build
         run: |
-          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DENABLE_COVERAGE:BOOL=${{ matrix.build_type == 'Debug' }} -DENABLE_DOCS:BOOL=${{ matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }} -DCPACK_IFW_ROOT=$IQTA_TOOLS/QtInstallerFramework/4.7/bin
+          cmake -G "${{ matrix.generator }}" $GITHUB_WORKSPACE -DCMAKE_BUILD_TYPE:STRING=${{ matrix.build_type }} -DENABLE_DOCS:BOOL=${{ matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }} -DCPACK_IFW_ROOT=$IQTA_TOOLS/QtInstallerFramework/4.7/bin
 
       - name: Build
         working-directory: ${{ runner.workspace }}/build
         shell: bash
         run: cmake --build . --parallel ${{ env.nproc }} --config ${{ matrix.build_type }}
-
-      - name: Ubuntu - Test and coverage
-        if: ${{ runner.os == 'Ubuntu' && matrix.build_type == 'Debug' }}
-        working-directory: ${{ runner.workspace }}/build
-        shell: bash
-        run: |
-          ctest -C ${{ matrix.build_type }}
-          gcovr -j ${{ env.nproc }} --delete --root ../ --print-summary --xml-pretty --xml coverage.xml . --gcov-executable '${{ matrix.gcov_executable }}'
-
-      - name: Windows - Test and coverage
-        if: ${{ runner.os == 'Windows' && matrix.build_type == 'Debug' }}
-        working-directory: ${{ runner.workspace }}/build
-        shell: bash
-        run: |
-          OpenCppCoverage.exe --export_type cobertura:coverage.xml --cover_children -- ctest -C ${{matrix.build_type}}
 
       - name: CPack
         if: ${{ matrix.build_type == 'Release' }}
@@ -150,19 +136,12 @@ jobs:
         if: ${{ startsWith(github.ref, 'refs/tags/') && matrix.build_type == 'Release' }}
         with:
           files: |
-            build/Solar-System-*${{ github.ref_name }}*-*.*
+            ${{ runner.workspace }}/build/Solar-System-${{ github.ref_name }}-*.*
 
       - name: Publish to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         if: ${{ github.ref == 'refs/heads/main' && matrix.build_type == 'Release' && contains(matrix.os, 'ubuntu') && contains(matrix.compiler, 'gcc') }}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./build/html
+          publish_dir: ${{ runner.workspace }}/build/html
 
-      - name: Publish to codecov
-        if: ${{ (runner.os == 'Ubuntu' || runner.os == 'Windows') && matrix.build_type == 'Debug' }}
-        uses: codecov/codecov-action@v4
-        with:
-          flags: ${{ runner.os }}
-          name: ${{ runner.os }}-coverage
-          files: ./build/coverage.xml

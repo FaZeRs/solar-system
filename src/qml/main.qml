@@ -24,11 +24,10 @@ ApplicationWindow {
 
         PerspectiveCamera {
             id: camera
-            position: Qt.vector3d(0, 200, 300)
-            eulerRotation.x: -30
+            position: Qt.vector3d(0, 0, 1600)
         }
 
-        OrbitCameraController { 
+        OrbitCameraController {
             anchors.fill: parent
             origin: Qt.vector3d(0, 0, 0)
             camera: camera
@@ -49,7 +48,6 @@ ApplicationWindow {
             }
         }
 
-
         DirectionalLight {
             id: sunLight
             color: "white"
@@ -59,7 +57,6 @@ ApplicationWindow {
             shadowMapQuality: DirectionalLight.ShadowMapQualityHigh
             eulerRotation: Qt.vector3d(0, 0, 0)
         }
-
 
         WasdController {
             controlledObject: camera

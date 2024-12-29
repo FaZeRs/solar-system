@@ -25,7 +25,7 @@ set(QML_FILES
     qml/ToolBar.qml
     qml/ToolButton.qml
     qml/Sun.qml
-    qml/Earth.qml)
+    qml/Planet.qml)
 
 set(RESOURCE_FILES assets/fonts/font-awesome-regular.otf assets/fonts/font-awesome-solid.otf
                    assets/fonts/font-awesome-brands.otf)
@@ -46,7 +46,23 @@ set(QML_RESOURCE_FILES
     qml/assets/meshes/sun.mesh
     qml/assets/maps/earth_color.png
     qml/assets/maps/earth_normals.png
-    qml/assets/meshes/earth.mesh)
+    qml/assets/meshes/earth.mesh
+    qml/assets/maps/mercury.png
+    qml/assets/meshes/mercury.mesh
+    qml/assets/maps/venus.png
+    qml/assets/meshes/venus.mesh
+    qml/assets/maps/mars_color.png
+    qml/assets/maps/mars_normals.png
+    qml/assets/meshes/mars.mesh
+    qml/assets/maps/jupiter.png
+    qml/assets/meshes/jupiter.mesh
+    qml/assets/maps/saturn_color.png
+    qml/assets/maps/saturn_rings.png
+    qml/assets/meshes/saturn.mesh
+    qml/assets/meshes/saturn_rings_top.mesh
+    qml/assets/meshes/saturn_rings_bottom.mesh
+    qml/assets/maps/uranus.png
+    qml/assets/meshes/uranus.mesh)
 
 qt_add_qml_module(
   ${CMAKE_PROJECT_NAME}

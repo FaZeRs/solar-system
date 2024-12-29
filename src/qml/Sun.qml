@@ -33,9 +33,7 @@ Node {
 
     Model {
         source: root.meshData
-        materials: [
-            material
-        ]
+        materials: [material]
         scale: Qt.vector3d(root.scale, root.scale, root.scale)
         eulerRotation.x: root.tilt
     }
@@ -45,8 +43,8 @@ Node {
         id: axisRotationAnimation
         loops: Animation.Infinite
         NumberAnimation {
-            from: 0;
-            to: 360;
+            from: 0
+            to: 360
             duration: (root.rotationPeriod * 1000 * 60 * 60) / root.speed // Duration in milliseconds
         }
     }
